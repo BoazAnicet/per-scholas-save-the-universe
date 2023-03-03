@@ -39,7 +39,7 @@ const game = () => {
     );
   };
 
-  // Empty array to hold aliens
+  // Array to hold aliens
   let aliens = [];
   // Populate aliens array with 6 alien
   const populateAliens = () => {
@@ -57,12 +57,16 @@ const game = () => {
     if (aliens[i].hull <= 0) {
       updateUI();
       const run = prompt("Run away?");
+
       if (run == "y") {
         console.log("You lose.");
         reset();
       } else if (run == "n") {
-        // if(i < aliens.)
         i++;
+        if (i >= 6) {
+          alert("You win!");
+          return;
+        }
         updateUI();
         return;
       }
@@ -74,12 +78,6 @@ const game = () => {
       alert("You lose!");
       reset();
     }
-    // if (player.hull > 0) {
-    //   aliens[i].attack(player);
-    // } else if (aliens[i].hull <= 0) {
-    //   i++;
-    // }
-
     updateUI();
   };
   ////
@@ -106,7 +104,7 @@ const game = () => {
     className: "name",
     innerHTML: `${aliens[i].name}`,
   });
-  // hull;
+
   const alienHullDiv = Object.assign(document.createElement("div"), {
     className: "hull",
     innerHTML: `Hull: ${aliens[i].hull}`,
